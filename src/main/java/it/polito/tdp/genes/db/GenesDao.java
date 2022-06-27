@@ -108,6 +108,14 @@ public class GenesDao {
 			throw new RuntimeException("Database error", e) ;
 		}
 	}
+	
+	/*
+	 * QUERY ALTERNATIVA UNICA:
+	 * SELECT c1.Localization, c2.Localization, COUNT(DISTINCT i.`Type`) AS peso
+FROM classification c1, classification c2, interactions i
+WHERE ((c1.GeneID = i.GeneID1 && c2.GeneID = i.GeneID2) || (c1.GeneID = i.GeneID2 && c2.GeneID = i.GeneID1)) AND c1.Localization> c2.Localization
+GROUP BY c1.Localization, c2.Localization
+	 */
 
 
 	
